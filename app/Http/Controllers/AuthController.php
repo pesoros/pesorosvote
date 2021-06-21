@@ -50,21 +50,23 @@ class AuthController extends Controller
         ];
   
         Auth::attempt($data);
-        $user = User::where('email', '=', $request->input('email'))->first();
-        $role = Role::where('user_id', '=', $user['id'])->first();
-        $event = Event::where('user_id', '=', $user['id'])->first();
-        session(['role' => $role['rolename']]);
-        session(['accountid' => $user['id']]);
-        if ($event != null) {
-            session(['hasevent' => True]);
-            session(['eventid' => $event['id']]);
-        } else {
-            session(['hasevent' => False]);
-        }
-        session(['event' => $user['id']]);
   
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
+
+            $user = User::where('email', '=', $request->input('email'))->first();
+            $role = Role::where('user_id', '=', $user['id'])->first();
+            $event = Event::where('user_id', '=', $user['id'])->first();
+            session(['role' => $role['rolename']]);
+            session(['accountid' => $user['id']]);
+            if ($event != null) {
+                session(['hasevent' => True]);
+                session(['eventid' => $event['id']]);
+            } else {
+                session(['hasevent' => False]);
+            }
+            session(['event' => $user['id']]);
+
             return redirect()->route('home');
   
         } else { // false

@@ -17,8 +17,8 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::group(['prefix' => 'dashboard'], function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout');    
     });
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');    
     
     Route::post('event/create', [EventController::class, 'store'])->name('eventcreate');
     Route::post('event/update', [EventController::class, 'update'])->name('eventupdate');
