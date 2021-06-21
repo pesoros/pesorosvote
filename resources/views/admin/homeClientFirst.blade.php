@@ -23,7 +23,7 @@
         <div class="col-xl-4">
         </div>
         <div class="col-xl-4">
-            <form method="post" action="{{ url('event/create') }}">
+            <form method="post" action="{{ url('dashboard/event/create') }}">
                 @csrf
                 <div class="card formcreate">
                     <div class="card-body">
