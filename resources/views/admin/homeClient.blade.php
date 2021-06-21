@@ -60,7 +60,7 @@
     <div class="row">
         <div class="col-xl-8">
             <div class="card">
-                <form method="post" enctype="multipart/form-data" action="{{ url('event/addcandidate') }}">
+                <form method="post" enctype="multipart/form-data" action="{{ url('dashboard/event/addcandidate') }}">
                     @csrf
                     <div class="card-body row">
                         <h4 class="card-title mb-4">Add Candidate</h4>
@@ -146,7 +146,7 @@
                                     @endphp
                                     <tr>
                                         <td class="listname">
-                                            <img src="{{ asset('assets/images/candidate/'.$item->image.'') }}" alt="user-image"
+                                            <img src="{{ asset('storage/images/candidate/'.$item->image.'') }}" alt="user-image"
                                                 class="avatar-sm rounded-circle me-2" /> {{ $item->candidate_name }}
                                         </td>
                                         <td>
@@ -198,7 +198,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{ url('event/update') }}">
+                    <form method="post" action="{{ url('dashboard/event/update') }}">
                         @csrf
                         <h4 class="card-title mb-3">Event Detail</h4>
                         <div class="mb-0 row">

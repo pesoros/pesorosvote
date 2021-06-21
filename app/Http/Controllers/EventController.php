@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Candidate;
 use App\Models\Vote;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use Validator;
 
@@ -98,7 +99,8 @@ class EventController extends Controller
         }
 
         $imageName = time().'.'.$request->candidatepict->extension();  
-        $request->candidatepict->move(public_path('assets/images/candidate'), $imageName);
+        // $request->candidatepict->move(public_path('assets/images/candidate'), $imageName);
+        $request->candidatepict->storeAs('public/images/candidate',$imageName);
 
         $candidate = new Candidate;
         $candidate->event_id = Session::get('eventid');

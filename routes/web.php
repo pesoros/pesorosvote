@@ -18,13 +18,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'dashboard'], function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');    
+        Route::post('event/create', [EventController::class, 'store'])->name('eventcreate');
+        Route::post('event/update', [EventController::class, 'update'])->name('eventupdate');
+        Route::post('event/addcandidate', [EventController::class, 'storeCandidate'])->name('addcandidate');
+        Route::get('event/deletecandidate/{id}', [EventController::class, 'destroyCandidate'])->name('deletecandidate');
+        Route::get('event/statuscandidate/{id}/{statval}', [EventController::class, 'statusCandidate'])->name('statuscandidate');
     });
-    
-    Route::post('event/create', [EventController::class, 'store'])->name('eventcreate');
-    Route::post('event/update', [EventController::class, 'update'])->name('eventupdate');
-    Route::post('event/addcandidate', [EventController::class, 'storeCandidate'])->name('addcandidate');
-    Route::get('event/deletecandidate/{id}', [EventController::class, 'destroyCandidate'])->name('deletecandidate');
-    Route::get('event/statuscandidate/{id}/{statval}', [EventController::class, 'statusCandidate'])->name('statuscandidate');
     
 });
 
