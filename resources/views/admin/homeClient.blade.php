@@ -146,7 +146,7 @@
                                     @endphp
                                     <tr>
                                         <td class="listname">
-                                            <img src="{{ asset('storage/images/candidate/'.$item->image.'') }}" alt="user-image"
+                                            <img src="{{ asset('assets/images/candidate/'.$item->image.'') }}" alt="user-image"
                                                 class="avatar-sm rounded-circle me-2" /> {{ $item->candidate_name }}
                                         </td>
                                         <td>
