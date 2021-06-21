@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Candidate;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Storage;
+use ImageKit\ImageKit;
 use Session;
 use Validator;
 
@@ -99,8 +100,24 @@ class EventController extends Controller
         }
 
         $imageName = time().'.'.$request->candidatepict->extension();  
-        // $request->candidatepict->move(public_path('assets/images/candidate'), $imageName);
-        $request->candidatepict->storeAs('public/images/candidate',$imageName);
+
+        $imageKit = new ImageKit(
+            "public_NK5HFULNAeHqqE9+/lLa43IOz7Q=",
+            "private_nhu7d8jV5FSRGee3v3bG/KpOSkg=",
+            "https://ik.imagekit.io/2egbwc8ye2q"
+        );
+
+        $imageURL = $imageKit->url(array(
+            "path" => $request->candidatepict,
+            "transformation" => array(
+                array(
+                    "height" => "300",
+                    "width" => "400",
+                )
+            )
+        ));
+        $request->candidatepict->move(public_path('../../public_html/web-pesorosvotes/assets/images/candidate'), $imageName);
+        // $request->candidatepict->storeAs('public/images/candidate',$imageName);
 
         $candidate = new Candidate;
         $candidate->event_id = Session::get('eventid');
