@@ -116,7 +116,7 @@ class EventController extends Controller
                 )
             )
         ));
-        $request->candidatepict->move(public_path('../../public_html/web-pesorosvotes/assets/images/candidate'), $imageName);
+        $request->candidatepict->move(public_path(env('SAVE_PATH').'/images/candidate'), $imageName);
         // $request->candidatepict->storeAs('public/images/candidate',$imageName);
 
         $candidate = new Candidate;
