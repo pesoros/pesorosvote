@@ -67,7 +67,7 @@
     
                         <div class="dropdown d-none d-lg-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect">
-                                <a href="logout">
+                                <a href="{{ url('dashboard/logout') }}">
                                     <i class="mdi mdi-logout-variant"></i>
                                 </a>
                             </button>
